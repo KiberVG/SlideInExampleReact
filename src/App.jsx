@@ -76,8 +76,15 @@ function App() {
 
      So, if the event handler is no longer in use after we unmount, then we should remove the event listener from the browser.
      To avoid clashing with other things.
+
+     This cleanup function will not fire when the component first mounts, but it will fire everytime BEFORE the useEffect
+     is triggered again. This function basically cleans up the effect from the previous call. 
+
+     In general, calling useEffect will cleanup the last useEffect and then do the current useEffect.
+
     */
     return () => {
+      // In the previous useEffect, we set the event handler, so we should remove it and then do the rest of the effect.
       window.removeEventListener('scroll', handleScroll);
     };
 
