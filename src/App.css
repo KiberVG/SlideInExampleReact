@@ -1,0 +1,78 @@
+/* App.css */
+.App {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  margin: 0 auto;
+  /*
+    We need this property because the slide-in element is hiding all the way to the right
+    without this, we would be able to scroll all the way to the right. This property basically ignores anything that overflows.
+    Take this off and try it yourself.
+  */
+  overflow-x: hidden;
+}
+
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+.nav-links {
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav-links li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.section {
+  margin-top: 30px;
+}
+
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.project {
+
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.footer {
+  margin-top: 50px;
+  text-align: center;
+  color: #666;
+}
+
+/* This is the stuff important for the slide-in */
+
+
+/* 
+  This will be put on if the element is NOT in view. Transform basically instantly performs an action to something
+  Here, we are using "translateX" to move something all the way to the right off of the screen from it's original position.
+  This way we are hiding the element from the user if the user hasn't seen it yet.
+*/
+.slide-section {
+  transform: translateX(100%);
+}
+
+/*
+  The transition property specifies what should happen when something has this class added to them for the first time.
+  We are basically saying transition: (we want this to be transitioned into) (it should take 2 seconds) (it should be smooth).
+  Without transition, it would just happen automatically and there would be no animation. You would just see that its there.
+*/
+
+.slide-in {
+  transition: transform 1s ease-out;
+  transform: translateX(0); /*This is the thing that we want to happen and the thing that needs to be transitioned into*/
+}
